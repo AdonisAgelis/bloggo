@@ -1,4 +1,4 @@
-import styles from "../styles/slug.module.css";
+import styles from "../../styles/Slug.module.css";
 import { GraphQLClient, gql } from "graphql-request";
 
 const hygraph = new GraphQLClient(process.env.HYGRAPH_CONTENT_API);
@@ -78,6 +78,11 @@ export default function BlogPost({ post }) {
           <h6 className={styles.date}>{post.datePublished}</h6>
         </div>
       </div>
+      <h2>{post.title}</h2>
+      <div
+        className={styles.content}
+        dangerouslySetInnerHTML={{ __html: post.content.html }}
+      ></div>
     </main>
   );
 }
