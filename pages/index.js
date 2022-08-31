@@ -5,6 +5,34 @@ import styles from "../styles/Home.module.css";
 
 const hygraph = new GraphQLClient(process.env.HYGRAPH_CONTENT_API);
 
+const QUERY = gql`
+  {
+    posts {
+      id
+      title
+      datePublished
+      slug
+      content {
+        html
+      }
+      author {
+        name
+        avatar {
+          url
+        }
+      }
+      coverPhoto {
+        publishedAt {
+          createdBy {
+            id
+          }
+          url
+        }
+      }
+    }
+  }
+`;
+
 export default function Home() {
   return (
     <div className={styles.container}>
