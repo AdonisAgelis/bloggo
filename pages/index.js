@@ -3,6 +3,8 @@ import Image from "next/image";
 import { GraphQLClient, gql } from "graphql-request";
 import styles from "../styles/Home.module.css";
 
+const hygraph = new GraphQLClient(process.env.HYGRAPH_CONTENT_API);
+
 export default function Home() {
   return (
     <div className={styles.container}>
